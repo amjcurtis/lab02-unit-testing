@@ -36,6 +36,7 @@ Then select and open `lab02-unit-testing.sln`
 
 ## Change Log
 
+`1.1` `2019-03-20`:
 
 ------------------------------
 
