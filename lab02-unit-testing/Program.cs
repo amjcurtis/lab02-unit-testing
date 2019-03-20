@@ -15,21 +15,26 @@ namespace lab02_unit_testing
             Console.WriteLine("Welcome to the ATM game!");
             Console.WriteLine(" ");
             Console.WriteLine("Enter the number of the action you would like to select.");
+            Console.WriteLine("   1. View balance\n" +
+                "   2. Withdraw funds\n" +
+                "   3. Deposit funds\n" +
+                "   4. Quit ATM session");
 
             try
             {
                 // Set boolean to true for keeping program running
                 bool runATM = true;
 
+                string userAction = Console.ReadLine();
+
                 // Use while loop to continue allowing user actions while boolean set to true
                 while (runATM == true)
                 {
-                    Console.WriteLine("   1. View balance\n" +
-                        "   2. Withdraw funds\n" +
-                        "   3. Deposit funds\n" +
-                        "   4. Quit ATM session");
+                    //Console.WriteLine("   1. View balance\n" +
+                    //    "   2. Withdraw funds\n" +
+                    //    "   3. Deposit funds\n" +
+                    //    "   4. Quit ATM session");
 
-                    string userAction = Console.ReadLine();
 
                     switch (userAction)
                     {
@@ -40,8 +45,13 @@ namespace lab02_unit_testing
 
                         case "2":
                             Console.WriteLine("You've selected \"Withdraw funds\".");
+                            Console.WriteLine("How much $ would you like to withdraw?");
+                            string amtToWithdraw = Console.ReadLine();
+                            decimal amtToWithdrawToDecimal = Convert.ToDecimal(amtToWithdraw);
                             // Call WithdrawFunds
+                            decimal newBalance = WithdrawFunds(amtToWithdrawToDecimal);
 
+                            Console.WriteLine($"Your account balance is now {newBalance:C2}");
                             break;
 
                         case "3":
@@ -62,7 +72,12 @@ namespace lab02_unit_testing
 
                     // Give user option to end ATM session or initiate new session
                     Console.WriteLine(" ");
-                    Console.WriteLine("To start a new ATM session, type the number of the action you'd like to do.\nOr hit Enter to exit the program. ");
+                    Console.WriteLine("To do a new ATM action, type the number of the action you'd like to do.\n" +
+                        "Or hit Enter to exit the program. ");
+                    Console.WriteLine("   1. View balance\n" +
+                        "   2. Withdraw funds\n" +
+                        "   3. Deposit funds\n" +
+                        "   4. Quit ATM session");
                     userAction = Console.ReadLine();
                     if (userAction != "1" &&
                         userAction != "2" &&
@@ -88,24 +103,33 @@ namespace lab02_unit_testing
         // Helper methods
         /////////////////////////////
 
-        // Calc/update balance
-
         // DisplayBalance
         static void DisplayBalance()
         {
-        
-            // Display using currency format string
-            Console.WriteLine($"Your balance is {balance:C2}.");
-
+            Console.WriteLine($"Your account balance is {balance:C2}.");
         }
 
         // WithdrawFunds
-            // Update balance
+        static decimal WithdrawFunds(decimal amountToWithdraw)
+        {
+            // Do math
+
             // Incl custom exception "Insufficient funds" upon overdraw
 
-        // DepositFunds
             // Update balance
+
+            // Include return stmt
+
+        }
+
+        // DepositFunds
+            // Do math
+            
             // Handle invalid format exception
+
+            // Update balance
+
+            // Include return stmt
 
     }
 }
