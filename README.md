@@ -42,3 +42,4 @@ Then select and open `lab02-unit-testing.sln`
 
 ## Attribution
 
+* I was pointed to the idea of using Environment.Exit(0) to close my console app from the TA of a 201 class I talked to.
