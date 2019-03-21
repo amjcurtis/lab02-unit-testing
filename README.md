@@ -30,13 +30,13 @@ Then select and open `lab02-unit-testing.sln`
 
 ##### Application Start
 
-![Application Start]()
+![Application Start Screen]()
 
 ------------------------------
 
 ## Change Log
 
-`1.1` `2019-03-20`:
+`1.1` `2019-03-20`: Built out UI to offer multiple ATM functions; created tests for individual non-void methods; implemented methods for the individual ATM functions. 
 
 ------------------------------
 

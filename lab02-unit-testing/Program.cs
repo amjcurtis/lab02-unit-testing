@@ -122,7 +122,7 @@ namespace lab02_unit_testing
             // Incl custom exception "Insufficient funds" upon overdraw
             if (newBalance < 0)
             {
-                throw new Exception("You have insufficient funds in your account. Please enter a different amount to withdraw.");
+                throw new Exception("You have insufficient funds in your account.");
             }
 
             balance = newBalance;
@@ -140,7 +140,7 @@ namespace lab02_unit_testing
         public static decimal DepositFunds(decimal amountToDeposit)
         {
             decimal accountBalanceAfterDeposit = balance + amountToDeposit;
-
+    
             balance = accountBalanceAfterDeposit;
 
             Console.WriteLine($"You've successfully deposited {amountToDeposit:C2}.");
