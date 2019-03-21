@@ -30,14 +30,22 @@ Then select and open `lab02-unit-testing.sln`
 
 ##### Application Start
 
-![Application Start]()
+![Application Start Screen](https://github.com/amjcurtis/lab02-unit-testing/blob/unit-testing-lab02/images/application_start_screen.png)
+
+![Display Balance](https://github.com/amjcurtis/lab02-unit-testing/blob/unit-testing-lab02/images/display_balance.png)
+
+![Withdraw and Deposit Actions](https://github.com/amjcurtis/lab02-unit-testing/blob/unit-testing-lab02/images/withdraw_and_deposit_actions.png)
+
+![Exit Process](https://github.com/amjcurtis/lab02-unit-testing/blob/unit-testing-lab02/images/exit_process.png)
 
 ------------------------------
 
 ## Change Log
 
+`1.1` `2019-03-20`: Built out UI to offer multiple ATM functions; created tests for individual non-void methods; implemented methods for the individual ATM functions. 
 
 ------------------------------
 
 ## Attribution
 
+* I was pointed to the idea of using Environment.Exit(0) to close my console app from the TA of a 201 class I talked to.
