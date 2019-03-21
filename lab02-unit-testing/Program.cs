@@ -140,12 +140,12 @@ namespace lab02_unit_testing
         /// <returns></returns>
         public static decimal DepositFunds(decimal amountToDeposit)
         {
-            decimal accountBalanceAfterDeposit = balance + amountToDeposit;
-
-            if (accountBalanceAfterDeposit < 0)
+            if (amountToDeposit < 0)
             {
                 throw new Exception("You cannot deposit a negative amount of money.");
             }
+
+            decimal accountBalanceAfterDeposit = balance + amountToDeposit;
 
             balance = accountBalanceAfterDeposit;
 
