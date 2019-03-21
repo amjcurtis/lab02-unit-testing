@@ -43,6 +43,7 @@ namespace lab02_unit_testing
                             string amtToWithdraw = Console.ReadLine();
                             decimal amtToWithdrawToDecimal = Convert.ToDecimal(amtToWithdraw);
                             decimal newBalance = WithdrawFunds(amtToWithdrawToDecimal);
+                            Console.WriteLine($"Your account balance is now negative: {newBalance}");
                             Console.WriteLine($"Your account balance is now {newBalance:C2}");
                             break;
 
@@ -60,7 +61,7 @@ namespace lab02_unit_testing
                             Console.WriteLine("You've selected \"Quit ATM session\".");
                             Console.WriteLine("Hit Enter to exit the program.");
                             Console.ReadLine();
-                            Environment.Exit(0);  
+                            Environment.Exit(0); // I got idea to use this from a friend
                             break;
 
                         default:
@@ -140,7 +141,12 @@ namespace lab02_unit_testing
         public static decimal DepositFunds(decimal amountToDeposit)
         {
             decimal accountBalanceAfterDeposit = balance + amountToDeposit;
-    
+
+            if (accountBalanceAfterDeposit < 0)
+            {
+                throw new Exception("You cannot deposit a negative amount of money.");
+            }
+
             balance = accountBalanceAfterDeposit;
 
             Console.WriteLine($"You've successfully deposited {amountToDeposit:C2}.");
