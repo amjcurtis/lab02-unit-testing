@@ -30,11 +30,6 @@ namespace lab02_unit_testing
                 // Use while loop to continue allowing user actions while boolean set to true
                 while (runATM == true)
                 {
-                    //Console.WriteLine("   1. View balance\n" +
-                    //    "   2. Withdraw funds\n" +
-                    //    "   3. Deposit funds\n" +
-                    //    "   4. Quit ATM session");
-
                     switch (userAction)
                     {
                         case "1":
@@ -47,9 +42,7 @@ namespace lab02_unit_testing
                             Console.WriteLine("How much money would you like to withdraw?");
                             string amtToWithdraw = Console.ReadLine();
                             decimal amtToWithdrawToDecimal = Convert.ToDecimal(amtToWithdraw);
-                            // Call WithdrawFunds
                             decimal newBalance = WithdrawFunds(amtToWithdrawToDecimal);
-
                             Console.WriteLine($"Your account balance is now {newBalance:C2}");
                             break;
 
@@ -58,9 +51,7 @@ namespace lab02_unit_testing
                             Console.WriteLine("How much money would you like to deposit?");
                             string amtToDeposit = Console.ReadLine();
                             decimal amtToDepositToDecimal = Convert.ToDecimal(amtToDeposit);
-                            // Call DepositFunds
                             decimal balanceAfterDeposit = DepositFunds(amtToDepositToDecimal);
-
                             Console.WriteLine($"Your account balance is now {balanceAfterDeposit:C2}");
                             break;
 
@@ -110,15 +101,19 @@ namespace lab02_unit_testing
         // Helper methods
         /////////////////////////////
 
-        // DisplayBalance
+        /// <summary>
+        /// Displays account balance to user in console
+        /// </summary>
         public static void DisplayBalance()
         {
-
-
             Console.WriteLine($"Your account balance is {balance:C2}.");
         }
 
-        // WithdrawFunds
+        /// <summary>
+        /// Updates account balance to reflect user deposit
+        /// </summary>
+        /// <param name="amountToWithdraw">User input specifying amount to withdraw</param>
+        /// <returns></returns>
         public static decimal WithdrawFunds(decimal amountToWithdraw)
         {
             // Attempted update to balance
@@ -130,27 +125,26 @@ namespace lab02_unit_testing
                 throw new Exception("You have insufficient funds in your account. Please enter a different amount to withdraw.");
             }
 
-            balance = newBalance; // TODO Need to find other solution to persist update to balance so it's accessible to other methods called subsequently?
+            balance = newBalance;
 
             Console.WriteLine($"You've successfully withdrawn {amountToWithdraw:C2}.");
 
             return newBalance;
         }
 
-        // DepositFunds
+        /// <summary>
+        /// Updates account balance to reflect user withdrawal
+        /// </summary>
+        /// <param name="amountToDeposit"></param>
+        /// <returns></returns>
         public static decimal DepositFunds(decimal amountToDeposit)
         {
             decimal accountBalanceAfterDeposit = balance + amountToDeposit;
 
-            // Handle invalid format exception
-            // Actually need to do this? Don't think so, since not taking in any user input or putting cap on account max
-
-            // Update balance
-            balance = accountBalanceAfterDeposit; // TODO Need to find other solution to persist update to balance so it's accessible to other methods called subsequently?
+            balance = accountBalanceAfterDeposit;
 
             Console.WriteLine($"You've successfully deposited {amountToDeposit:C2}.");
 
-            // Include return stmt
             return accountBalanceAfterDeposit;
         }
     }
