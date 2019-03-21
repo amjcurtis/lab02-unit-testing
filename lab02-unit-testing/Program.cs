@@ -114,7 +114,7 @@ namespace lab02_unit_testing
         /// Updates account balance to reflect user deposit
         /// </summary>
         /// <param name="amountToWithdraw">User input specifying amount to withdraw</param>
-        /// <returns></returns>
+        /// <returns>Returns an updated account balance as a decimal</returns>
         public static decimal WithdrawFunds(decimal amountToWithdraw)
         {
             // Attempted update to balance
@@ -137,7 +137,7 @@ namespace lab02_unit_testing
         /// Updates account balance to reflect user withdrawal
         /// </summary>
         /// <param name="amountToDeposit"></param>
-        /// <returns></returns>
+        /// <returns>Returns an updated account balance as a decimal</returns>
         public static decimal DepositFunds(decimal amountToDeposit)
         {
             if (amountToDeposit < 0)
