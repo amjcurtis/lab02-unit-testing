@@ -9,7 +9,7 @@ namespace lab02_unit_testing
         /// <summary>
         /// Handles control flow of user interaction and calls helper methods
         /// </summary>
-        /// <param name="args">string[]</param>
+        /// <param name="args">string array</param>
         public static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the ATM game!");
@@ -104,22 +104,27 @@ namespace lab02_unit_testing
         /////////////////////////////
 
         // DisplayBalance
-        static void DisplayBalance()
+        public static void DisplayBalance()
         {
             Console.WriteLine($"Your account balance is {balance:C2}.");
         }
 
         // WithdrawFunds
-        static decimal WithdrawFunds(decimal amountToWithdraw)
+        public static decimal WithdrawFunds(decimal amountToWithdraw)
         {
-            // Do math
+            decimal newBalance = balance - amountToWithdraw;
 
             // Incl custom exception "Insufficient funds" upon overdraw
+            if (newBalance < 0)
+            {
+                throw new Exception("You have insufficient funds in your account. Please enter a different amount to withdraw.");
+            }
 
-            // Update balance
+            balance = newBalance;
 
-            // Include return stmt
+            Console.WriteLine($"You've successfully withdrawn {amountToWithdraw:C2}.");
 
+            return newBalance;
         }
 
         // DepositFunds
