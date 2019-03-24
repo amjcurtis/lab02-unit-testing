@@ -32,9 +32,15 @@ Then select and open `lab02-unit-testing.sln`
 
 ![Application Start Screen](https://github.com/amjcurtis/lab02-unit-testing/blob/unit-testing-lab02/images/application_start_screen.png)
 
+##### Display Balance
+
 ![Display Balance](https://github.com/amjcurtis/lab02-unit-testing/blob/unit-testing-lab02/images/display_balance.png)
 
+##### Withdraw and Deposit Actions 
+
 ![Withdraw and Deposit Actions](https://github.com/amjcurtis/lab02-unit-testing/blob/unit-testing-lab02/images/withdraw_and_deposit_actions.png)
+
+##### Exit Process
 
 ![Exit Process](https://github.com/amjcurtis/lab02-unit-testing/blob/unit-testing-lab02/images/exit_process.png)
 
