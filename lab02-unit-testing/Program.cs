@@ -43,8 +43,7 @@ namespace lab02_unit_testing
                             string amtToWithdraw = Console.ReadLine();
                             decimal amtToWithdrawToDecimal = Convert.ToDecimal(amtToWithdraw);
                             decimal newBalance = WithdrawFunds(amtToWithdrawToDecimal);
-                            Console.WriteLine($"Your account balance is now negative: {newBalance}");
-                            Console.WriteLine($"Your account balance is now {newBalance:C2}");
+                            Console.WriteLine($"Your account balance is {newBalance:C2}");
                             break;
 
                         case "3":
@@ -53,7 +52,7 @@ namespace lab02_unit_testing
                             string amtToDeposit = Console.ReadLine();
                             decimal amtToDepositToDecimal = Convert.ToDecimal(amtToDeposit);
                             decimal balanceAfterDeposit = DepositFunds(amtToDepositToDecimal);
-                            Console.WriteLine($"Your account balance is now {balanceAfterDeposit:C2}");
+                            Console.WriteLine($"Your account balance is {balanceAfterDeposit:C2}");
                             break;
 
                         case "4":
@@ -61,7 +60,7 @@ namespace lab02_unit_testing
                             Console.WriteLine("You've selected \"Quit ATM session\".");
                             Console.WriteLine("Hit Enter to exit the program.");
                             Console.ReadLine();
-                            Environment.Exit(0); // I got idea to use this from a friend
+                            Environment.Exit(0);
                             break;
 
                         default:
@@ -114,44 +113,53 @@ namespace lab02_unit_testing
         /// Updates account balance to reflect user deposit
         /// </summary>
         /// <param name="amountToWithdraw">User input specifying amount to withdraw</param>
-        /// <returns></returns>
+        /// <returns>Returns an updated account balance as a decimal</returns>
         public static decimal WithdrawFunds(decimal amountToWithdraw)
         {
-            // Attempted update to balance
             decimal newBalance = balance - amountToWithdraw;
 
             // Incl custom exception "Insufficient funds" upon overdraw
-            if (newBalance < 0)
+            if (amountToWithdraw > 0)
             {
-                throw new Exception("You have insufficient funds in your account.");
+                if (newBalance > 0)
+                {
+                    // Attempted update to balance
+                    balance = newBalance;
+                    Console.WriteLine($"You've successfully withdrawn {amountToWithdraw:C2}.");
+                    return newBalance;
+                }
+                else
+                {
+                    Console.WriteLine("You have insufficient funds in your account.");
+                    return balance;
+                }
             }
-
-            balance = newBalance;
-
-            Console.WriteLine($"You've successfully withdrawn {amountToWithdraw:C2}.");
-
-            return newBalance;
+            else
+            {
+                Console.WriteLine("You cannot withdraw a negative amount.");
+                return balance;
+            }
         }
 
         /// <summary>
         /// Updates account balance to reflect user withdrawal
         /// </summary>
         /// <param name="amountToDeposit"></param>
-        /// <returns></returns>
+        /// <returns>Returns an updated account balance as a decimal</returns>
         public static decimal DepositFunds(decimal amountToDeposit)
         {
-            if (amountToDeposit < 0)
+            if (amountToDeposit > 0)
             {
-                throw new Exception("You cannot deposit a negative amount of money.");
+                decimal accountBalanceAfterDeposit = balance + amountToDeposit;
+                balance = accountBalanceAfterDeposit;
+                Console.WriteLine($"You've successfully deposited {amountToDeposit:C2}.");
+                return accountBalanceAfterDeposit;
             }
-
-            decimal accountBalanceAfterDeposit = balance + amountToDeposit;
-
-            balance = accountBalanceAfterDeposit;
-
-            Console.WriteLine($"You've successfully deposited {amountToDeposit:C2}.");
-
-            return accountBalanceAfterDeposit;
+            else
+            {
+                Console.WriteLine("You cannot deposit a negative amount of money.");
+                return balance;
+            }
         }
     }
 }
