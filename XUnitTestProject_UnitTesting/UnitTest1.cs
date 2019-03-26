@@ -55,7 +55,7 @@ namespace XUnitTestProject_UnitTesting
             decimal balanceAfterNegativeDeposit = Program.DepositFunds(-10m);
 
             // Assert
-            Assert.NotEqual(190m, balanceAfterNegativeDeposit); // TODO Fix, but not sure why it's not working
+            Assert.NotEqual(190m, balanceAfterNegativeDeposit);
         }
     }
 }

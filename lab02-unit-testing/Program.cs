@@ -43,8 +43,7 @@ namespace lab02_unit_testing
                             string amtToWithdraw = Console.ReadLine();
                             decimal amtToWithdrawToDecimal = Convert.ToDecimal(amtToWithdraw);
                             decimal newBalance = WithdrawFunds(amtToWithdrawToDecimal);
-                            Console.WriteLine($"Your account balance is now negative: {newBalance}");
-                            Console.WriteLine($"Your account balance is now {newBalance:C2}");
+                            Console.WriteLine($"Your account balance is {newBalance:C2}");
                             break;
 
                         case "3":
@@ -53,7 +52,7 @@ namespace lab02_unit_testing
                             string amtToDeposit = Console.ReadLine();
                             decimal amtToDepositToDecimal = Convert.ToDecimal(amtToDeposit);
                             decimal balanceAfterDeposit = DepositFunds(amtToDepositToDecimal);
-                            Console.WriteLine($"Your account balance is now {balanceAfterDeposit:C2}");
+                            Console.WriteLine($"Your account balance is {balanceAfterDeposit:C2}");
                             break;
 
                         case "4":
@@ -61,7 +60,7 @@ namespace lab02_unit_testing
                             Console.WriteLine("You've selected \"Quit ATM session\".");
                             Console.WriteLine("Hit Enter to exit the program.");
                             Console.ReadLine();
-                            Environment.Exit(0); // I got idea to use this from a friend
+                            Environment.Exit(0);
                             break;
 
                         default:
@@ -120,16 +119,24 @@ namespace lab02_unit_testing
             decimal newBalance = balance - amountToWithdraw;
 
             // Incl custom exception "Insufficient funds" upon overdraw
-            if (newBalance > 0)
+            if (amountToWithdraw > 0)
             {
-                // Attempted update to balance
-                balance = newBalance;
-                Console.WriteLine($"You've successfully withdrawn {amountToWithdraw:C2}.");
-                return newBalance;
+                if (newBalance > 0)
+                {
+                    // Attempted update to balance
+                    balance = newBalance;
+                    Console.WriteLine($"You've successfully withdrawn {amountToWithdraw:C2}.");
+                    return newBalance;
+                }
+                else
+                {
+                    Console.WriteLine("You have insufficient funds in your account.");
+                    return balance;
+                }
             }
             else
             {
-                Console.WriteLine("You have insufficient funds in your account.");
+                Console.WriteLine("You cannot withdraw a negative amount.");
                 return balance;
             }
         }
