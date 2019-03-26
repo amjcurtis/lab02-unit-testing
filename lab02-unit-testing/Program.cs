@@ -117,20 +117,21 @@ namespace lab02_unit_testing
         /// <returns>Returns an updated account balance as a decimal</returns>
         public static decimal WithdrawFunds(decimal amountToWithdraw)
         {
-            // Attempted update to balance
             decimal newBalance = balance - amountToWithdraw;
 
             // Incl custom exception "Insufficient funds" upon overdraw
-            if (newBalance < 0)
+            if (newBalance > 0)
             {
-                throw new Exception("You have insufficient funds in your account.");
+                // Attempted update to balance
+                balance = newBalance;
+                Console.WriteLine($"You've successfully withdrawn {amountToWithdraw:C2}.");
+                return newBalance;
             }
-
-            balance = newBalance;
-
-            Console.WriteLine($"You've successfully withdrawn {amountToWithdraw:C2}.");
-
-            return newBalance;
+            else
+            {
+                Console.WriteLine("You have insufficient funds in your account.");
+                return balance;
+            }
         }
 
         /// <summary>
@@ -140,18 +141,18 @@ namespace lab02_unit_testing
         /// <returns>Returns an updated account balance as a decimal</returns>
         public static decimal DepositFunds(decimal amountToDeposit)
         {
-            if (amountToDeposit < 0)
+            if (amountToDeposit > 0)
             {
-                throw new Exception("You cannot deposit a negative amount of money.");
+                decimal accountBalanceAfterDeposit = balance + amountToDeposit;
+                balance = accountBalanceAfterDeposit;
+                Console.WriteLine($"You've successfully deposited {amountToDeposit:C2}.");
+                return accountBalanceAfterDeposit;
             }
-
-            decimal accountBalanceAfterDeposit = balance + amountToDeposit;
-
-            balance = accountBalanceAfterDeposit;
-
-            Console.WriteLine($"You've successfully deposited {amountToDeposit:C2}.");
-
-            return accountBalanceAfterDeposit;
+            else
+            {
+                Console.WriteLine("You cannot deposit a negative amount of money.");
+                return balance;
+            }
         }
     }
 }
