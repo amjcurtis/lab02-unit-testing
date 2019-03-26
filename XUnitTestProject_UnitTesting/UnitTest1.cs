@@ -5,6 +5,10 @@ namespace XUnitTestProject_UnitTesting
 {
     public class UnitTest1
     {
+
+        /// <summary>
+        /// Tests whether can return updated balance after withdrawal of funds
+        /// </summary>
         [Fact]
         public void CanReturnNewBalanceFromWithdrawFunds()
         {
@@ -19,6 +23,9 @@ namespace XUnitTestProject_UnitTesting
             Assert.Equal(950m, newBalanceAfterWithdraw);
         }
 
+        /// <summary>
+        /// Tests whether user can overdraw account
+        /// </summary>
         [Fact]
         public void CannotOverdrawAccount()
         {
@@ -32,6 +39,9 @@ namespace XUnitTestProject_UnitTesting
             Assert.NotEqual(-100m, balanceAfterOverdraw);
         }
 
+        /// <summary>
+        /// Tests whether can return updated balance after deposit
+        /// </summary>
         [Fact]
         public void CanReturnNewBalanceFromDepositFunds()
         {
@@ -45,6 +55,9 @@ namespace XUnitTestProject_UnitTesting
             Assert.Equal(1200m, newBalanceAfterDeposit); 
         }
 
+        /// <summary>
+        /// Tests whether user can deposit negative amount
+        /// </summary>
         [Fact]
         public void CannotDepositNegativeAmount()
         {
